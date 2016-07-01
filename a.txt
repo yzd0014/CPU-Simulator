@@ -1,0 +1,19 @@
+.text
+li $01, 0
+li $05, 7
+li $16, 0
+li $17, 10
+li $18, 100
+li $19, 1000
+
+loop:
+subi $05, $05, 1
+fadd $16, $16, $17
+fadd $16, $16, $18
+fadd $16, $16, $19
+bge $05, $01, loop
+nop
+nop
+
+syscall
+	

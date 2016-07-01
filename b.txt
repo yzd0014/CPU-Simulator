@@ -1,0 +1,17 @@
+.text
+li $01, 0
+li $02, 32
+
+loop:
+subi $02, $02, 1
+nop
+nop
+nop
+nop
+nop
+bge $02, $01, loop
+nop
+nop
+
+syscall
+	
