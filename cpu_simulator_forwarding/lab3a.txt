@@ -1,0 +1,15 @@
+.text
+li $a1, 0
+li $a2, 32
+
+loop:
+subi $a2, $a2, 1
+nop
+nop
+nop
+nop
+nop
+bge $a2, $a1, loop
+nop
+li $v0, 10
+syscall

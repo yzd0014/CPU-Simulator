@@ -1,0 +1,22 @@
+.text
+li $t1, 0
+li $t2, 10
+li $t3, 100
+li $t4, 1000
+li $t5, 7
+
+loop:
+subi $t5, $t5, 1
+add $t1, $t1, $t2
+add $t1, $t1, $t3
+add $t1, $t1, $t4
+bge $t5, $t0, loop
+nop
+
+add $a0, $t0, $t1
+li $v0, 1
+syscall
+
+li $v0, 10
+syscall
+	

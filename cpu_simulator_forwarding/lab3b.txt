@@ -1,0 +1,63 @@
+.data
+A: .asciiz "The string is a palindrome."
+B: .asciiz "The string is not a palindrome."
+C: .space 1024
+
+.text
+la $a0, C
+li $a1, 1024
+li $v0, 8
+syscall
+
+la $t1, C
+la $t2, C
+
+length_loop:
+lb $t3, ($t2)
+nop
+nopbeqz $t3, end_length_loop
+nop
+
+addi $t2, $t2, 1
+b length_loop
+nop
+
+end_length_loop:
+subi $t2, $t2, 1
+nop
+
+test_loop:
+bge $t1, $t2, is_palin
+nop
+
+lb $t3, ($t1)
+noplb $t4, ($t2)
+nop
+nop
+bne $t3, $t4, not_palin
+nop
+
+addi $t1, $t1, 1
+subi $t2, $t2, 1
+b test_loop
+nop
+
+is_palin:
+
+la $a0, A
+li $v0, 4
+syscall
+b exit
+nop
+
+not_palin:
+
+la $a0, B
+li $v0, 4
+syscall
+b exit
+nop
+
+exit:
+li $v0, 10
+syscall
